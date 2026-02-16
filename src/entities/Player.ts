@@ -17,6 +17,9 @@ export class Player extends Phaser.GameObjects.Sprite {
   public maxHp: number = PLAYER_MAX_HP;
   public bones: number = 0;
   public totemFragments: number = 0;
+  public boneArmorChance: number = 0; // 30% chance to halve damage when active
+  public isStealthed: boolean = false; // tall grass stealth
+  public stealthCritBonus: boolean = false; // first hit from stealth crits
 
   // Movement state
   private canDoubleJump: boolean = false;
@@ -214,7 +217,13 @@ export class Player extends Phaser.GameObjects.Sprite {
   public takeDamage(amount: number): boolean {
     if (this.invincible || this.hp <= 0) return false;
 
-    this.hp = Math.max(0, this.hp - amount);
+    // Bone Armor: chance to halve incoming damage
+    let finalAmount = amount;
+    if (this.boneArmorChance > 0 && Math.random() < this.boneArmorChance) {
+      finalAmount = Math.floor(amount / 2);
+    }
+
+    this.hp = Math.max(0, this.hp - finalAmount);
     this.invincible = true;
     this.invincibleTimer = this.INVINCIBLE_DURATION;
 

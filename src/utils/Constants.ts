@@ -31,6 +31,24 @@ export const SPEAR_THROWER_SPEED = 40;
 export const SPEAR_THROWER_HP = 50;
 export const SPEAR_THROWER_DAMAGE = 20;
 
+export const POISON_SNAKE_SPEED = 60;
+export const POISON_SNAKE_HP = 30;
+export const POISON_SNAKE_DAMAGE = 10;
+export const POISON_SNAKE_SPIT_SPEED = 200;
+export const POISON_DOT_DAMAGE = 3;
+export const POISON_DOT_TICKS = 4;
+export const POISON_DOT_INTERVAL = 500;
+
+export const SHIELD_WARRIOR_SPEED = 35;
+export const SHIELD_WARRIOR_HP = 70;
+export const SHIELD_WARRIOR_DAMAGE = 20;
+
+export const SHAMAN_SPEED = 30;
+export const SHAMAN_HP = 45;
+export const SHAMAN_DAMAGE = 15;
+export const SHAMAN_SUMMON_COOLDOWN = 5000;
+export const SHAMAN_BUFF_RANGE = 120;
+
 // Colors (for placeholder graphics)
 export const COLORS = {
   PLAYER: 0x4a90d9,
@@ -39,6 +57,9 @@ export const COLORS = {
   WOLF: 0x888888,
   BOAR: 0x8B4513,
   SPEAR_THROWER: 0xcc4444,
+  POISON_SNAKE: 0x2d8b2d,
+  SHIELD_WARRIOR: 0x7788cc,
+  SHAMAN: 0x9933cc,
   GROUND: 0x4a7a3a,
   PLATFORM: 0x6b5b3a,
   SKY: 0x87CEEB,
@@ -46,6 +67,10 @@ export const COLORS = {
   HP_BG: 0x333333,
   BONE: 0xf0e6d2,
   TOTEM: 0x9b59b6,
+  VINE: 0x228b22,
+  BOULDER: 0x808080,
+  POISON_SWAMP: 0x4a0080,
+  TALL_GRASS: 0x3a6b1a,
 };
 
 // Map generation

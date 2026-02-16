@@ -181,6 +181,191 @@ export class BootScene extends Phaser.Scene {
     bossGfx.generateTexture('boss_mammoth', 54, 40);
     bossGfx.destroy();
 
+    // Poison Snake - 16x8 green snake
+    const snakeGfx = this.make.graphics({ x: 0, y: 0 });
+    snakeGfx.fillStyle(COLORS.POISON_SNAKE);
+    snakeGfx.fillRect(0, 2, 12, 4);
+    // Head
+    snakeGfx.fillRect(12, 0, 5, 6);
+    // Eye
+    snakeGfx.fillStyle(0xff0000);
+    snakeGfx.fillRect(14, 1, 2, 2);
+    // Tongue
+    snakeGfx.fillStyle(0xff3333);
+    snakeGfx.fillRect(17, 2, 3, 1);
+    // Tail
+    snakeGfx.fillStyle(0x1d6b1d);
+    snakeGfx.fillRect(0, 3, 3, 2);
+    snakeGfx.generateTexture('poison_snake', 20, 8);
+    snakeGfx.destroy();
+
+    // Poison spit projectile - 6x4 green blob
+    const spitGfx = this.make.graphics({ x: 0, y: 0 });
+    spitGfx.fillStyle(0x44dd44);
+    spitGfx.fillCircle(3, 2, 3);
+    spitGfx.fillStyle(0x88ff88);
+    spitGfx.fillCircle(2, 1, 1);
+    spitGfx.generateTexture('poison_spit', 6, 5);
+    spitGfx.destroy();
+
+    // Shield Warrior - 16x24 humanoid with shield
+    const shieldGfx = this.make.graphics({ x: 0, y: 0 });
+    // Body
+    shieldGfx.fillStyle(COLORS.SHIELD_WARRIOR);
+    shieldGfx.fillRect(2, 4, 10, 12);
+    // Head
+    shieldGfx.fillStyle(0xc19a6b);
+    shieldGfx.fillRect(3, 0, 8, 6);
+    // Shield (right side)
+    shieldGfx.fillStyle(0xaaaacc);
+    shieldGfx.fillRect(12, 2, 4, 14);
+    shieldGfx.fillStyle(0x8888aa);
+    shieldGfx.fillRect(13, 4, 2, 10);
+    // Legs
+    shieldGfx.fillStyle(0x555577);
+    shieldGfx.fillRect(3, 16, 4, 8);
+    shieldGfx.fillRect(8, 16, 4, 8);
+    shieldGfx.generateTexture('shield_warrior', 16, 24);
+    shieldGfx.destroy();
+
+    // Shaman - 14x24 with staff and headdress
+    const shamanGfx = this.make.graphics({ x: 0, y: 0 });
+    // Body (robes)
+    shamanGfx.fillStyle(COLORS.SHAMAN);
+    shamanGfx.fillRect(2, 6, 10, 12);
+    // Head
+    shamanGfx.fillStyle(0xc19a6b);
+    shamanGfx.fillRect(3, 1, 8, 6);
+    // Headdress
+    shamanGfx.fillStyle(0xff4444);
+    shamanGfx.fillRect(2, 0, 10, 2);
+    shamanGfx.fillStyle(0xffcc00);
+    shamanGfx.fillRect(4, 0, 2, 1);
+    shamanGfx.fillRect(8, 0, 2, 1);
+    // Staff
+    shamanGfx.fillStyle(0x8B7355);
+    shamanGfx.fillRect(12, 0, 2, 20);
+    // Staff orb
+    shamanGfx.fillStyle(0xff00ff);
+    shamanGfx.fillCircle(13, 0, 2);
+    // Legs
+    shamanGfx.fillStyle(0x6a2a8a);
+    shamanGfx.fillRect(3, 18, 4, 6);
+    shamanGfx.fillRect(8, 18, 4, 6);
+    shamanGfx.generateTexture('shaman', 16, 24);
+    shamanGfx.destroy();
+
+    // Summon portal effect
+    const portalGfx = this.make.graphics({ x: 0, y: 0 });
+    portalGfx.fillStyle(0x9933cc, 0.6);
+    portalGfx.fillCircle(6, 6, 6);
+    portalGfx.fillStyle(0xff00ff, 0.4);
+    portalGfx.fillCircle(6, 6, 3);
+    portalGfx.generateTexture('summon_portal', 12, 12);
+    portalGfx.destroy();
+
+    // Sling rock projectile - 6x6 brown rock
+    const rockGfx = this.make.graphics({ x: 0, y: 0 });
+    rockGfx.fillStyle(0x887766);
+    rockGfx.fillCircle(3, 3, 3);
+    rockGfx.fillStyle(0xaa9988);
+    rockGfx.fillRect(1, 1, 2, 2);
+    rockGfx.generateTexture('sling_rock', 6, 6);
+    rockGfx.destroy();
+
+    // Blowdart projectile - 10x2 thin dart
+    const dartGfx = this.make.graphics({ x: 0, y: 0 });
+    dartGfx.fillStyle(0x8B7355);
+    dartGfx.fillRect(0, 1, 8, 1);
+    dartGfx.fillStyle(0x44dd44);
+    dartGfx.fillRect(8, 0, 3, 3);
+    dartGfx.generateTexture('blowdart_dart', 11, 3);
+    dartGfx.destroy();
+
+    // Throwing spear projectile - 14x4
+    const tSpearGfx = this.make.graphics({ x: 0, y: 0 });
+    tSpearGfx.fillStyle(0x8B7355);
+    tSpearGfx.fillRect(0, 1, 10, 2);
+    tSpearGfx.fillStyle(0xcccccc);
+    tSpearGfx.fillTriangle(10, 0, 14, 2, 10, 4);
+    tSpearGfx.generateTexture('throwing_spear_proj', 14, 4);
+    tSpearGfx.destroy();
+
+    // Slingshot pebble - 4x4
+    const pebbleGfx = this.make.graphics({ x: 0, y: 0 });
+    pebbleGfx.fillStyle(0x999999);
+    pebbleGfx.fillCircle(2, 2, 2);
+    pebbleGfx.generateTexture('slingshot_pebble', 4, 4);
+    pebbleGfx.destroy();
+
+    // Vine - hanging vine segment
+    const vineGfx = this.make.graphics({ x: 0, y: 0 });
+    vineGfx.fillStyle(0x228b22);
+    vineGfx.fillRect(3, 0, 2, 32);
+    vineGfx.fillStyle(0x33aa33);
+    vineGfx.fillRect(1, 6, 6, 3);
+    vineGfx.fillRect(0, 16, 8, 3);
+    vineGfx.fillRect(1, 26, 6, 3);
+    vineGfx.generateTexture('vine', 8, 32);
+    vineGfx.destroy();
+
+    // Boulder - 16x14 grey rock
+    const boulderGfx = this.make.graphics({ x: 0, y: 0 });
+    boulderGfx.fillStyle(0x808080);
+    boulderGfx.fillRoundedRect(0, 0, 16, 14, 3);
+    boulderGfx.fillStyle(0x999999);
+    boulderGfx.fillRect(3, 2, 4, 3);
+    boulderGfx.fillStyle(0x666666);
+    boulderGfx.fillRect(8, 6, 5, 3);
+    boulderGfx.generateTexture('boulder', 16, 14);
+    boulderGfx.destroy();
+
+    // Poison swamp tile - purple-green
+    const swampGfx = this.make.graphics({ x: 0, y: 0 });
+    swampGfx.fillStyle(0x2a1a3a);
+    swampGfx.fillRect(0, 0, TILE_SIZE, TILE_SIZE);
+    swampGfx.fillStyle(0x4a0080, 0.6);
+    swampGfx.fillRect(0, 0, TILE_SIZE, 4);
+    swampGfx.fillStyle(0x33cc33, 0.3);
+    swampGfx.fillRect(2, 1, 4, 2);
+    swampGfx.fillRect(10, 2, 3, 1);
+    // Bubbles
+    swampGfx.fillStyle(0x66ff66, 0.5);
+    swampGfx.fillCircle(4, 2, 1);
+    swampGfx.fillCircle(12, 1, 1);
+    swampGfx.generateTexture('poison_swamp', TILE_SIZE, TILE_SIZE);
+    swampGfx.destroy();
+
+    // Tall grass - 16x20
+    const grassGfx = this.make.graphics({ x: 0, y: 0 });
+    grassGfx.fillStyle(0x3a6b1a);
+    grassGfx.fillTriangle(2, 20, 3, 0, 5, 20);
+    grassGfx.fillStyle(0x4a8b2a);
+    grassGfx.fillTriangle(6, 20, 8, 2, 10, 20);
+    grassGfx.fillStyle(0x3a7b1a);
+    grassGfx.fillTriangle(10, 20, 12, 4, 14, 20);
+    grassGfx.fillStyle(0x5a9b3a);
+    grassGfx.fillTriangle(0, 20, 1, 6, 3, 20);
+    grassGfx.fillTriangle(13, 20, 15, 3, 16, 20);
+    grassGfx.generateTexture('tall_grass', 16, 20);
+    grassGfx.destroy();
+
+    // Mystery totem object
+    const mysteryTotemGfx = this.make.graphics({ x: 0, y: 0 });
+    mysteryTotemGfx.fillStyle(0x8B4513);
+    mysteryTotemGfx.fillRect(4, 8, 8, 24);
+    // Face
+    mysteryTotemGfx.fillStyle(0xffcc00);
+    mysteryTotemGfx.fillRect(5, 10, 3, 3);
+    mysteryTotemGfx.fillRect(10, 10, 3, 3);
+    mysteryTotemGfx.fillStyle(0xff4444);
+    mysteryTotemGfx.fillRect(6, 16, 6, 2);
+    // Top
+    mysteryTotemGfx.fillStyle(0x9b59b6);
+    mysteryTotemGfx.fillTriangle(8, 0, 0, 10, 16, 10);
+    mysteryTotemGfx.generateTexture('mystery_totem', 16, 32);
+    mysteryTotemGfx.destroy();
+
     // Particle
     const particleGfx = this.make.graphics({ x: 0, y: 0 });
     particleGfx.fillStyle(0xffffff);

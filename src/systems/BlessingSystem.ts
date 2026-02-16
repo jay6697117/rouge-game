@@ -39,11 +39,10 @@ const ALL_BLESSINGS: Blessing[] = [
   {
     id: 'bone_armor',
     name: 'Bone Armor',
-    description: '+20 max HP',
+    description: '30% chance to halve damage',
     icon: '🦴',
     apply: (player, _weapons) => {
-      player.maxHp += 20;
-      player.hp += 20;
+      player.boneArmorChance = Math.min(1, player.boneArmorChance + 0.3);
     },
   },
   {
