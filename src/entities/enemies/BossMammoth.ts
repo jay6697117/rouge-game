@@ -72,12 +72,12 @@ export class BossMammoth extends Enemy {
     this.body.setVelocityY(-200);
 
     this.scene.time.delayedCall(500, () => {
-      if (this.state === 'dead') return;
+      if (this.aiState === 'dead') return;
       // Slam down
       this.body.setVelocityY(400);
 
       this.scene.time.delayedCall(300, () => {
-        if (this.state === 'dead') return;
+        if (this.aiState === 'dead') return;
         this.isStopping = false;
         // Screen shake
         this.scene.cameras.main.shake(200, 0.01);
@@ -97,7 +97,7 @@ export class BossMammoth extends Enemy {
     this.body.setVelocityX(0);
 
     this.scene.time.delayedCall(400, () => {
-      if (this.state === 'dead') return;
+      if (this.aiState === 'dead') return;
       this.body.setVelocityX(dir * this.speed * 4);
 
       this.scene.time.delayedCall(800, () => {

@@ -22,7 +22,7 @@ export class ShieldWarrior extends Enemy {
   }
 
   takeDamage(amount: number): boolean {
-    if (this.state === 'dead') return false;
+    if (this.aiState === 'dead') return false;
 
     // Shield blocks frontal attacks: check if attack comes from the direction the warrior is facing
     if (this.shieldUp && this.player) {

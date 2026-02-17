@@ -44,7 +44,7 @@ export class Boar extends Enemy {
     this.setTint(0xff8888);
 
     this.scene.time.delayedCall(300, () => {
-      if (this.state === 'dead') return;
+      if (this.aiState === 'dead') return;
       this.body.setVelocityX(dir * this.chargeSpeed);
       this.setTint(0xff4444);
 

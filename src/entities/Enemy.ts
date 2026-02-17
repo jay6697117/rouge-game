@@ -13,7 +13,7 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
   public score: number = 10;
   public enemyType: string = 'generic';
 
-  protected state: EnemyState = 'patrol';
+  protected aiState: EnemyState = 'patrol';
   protected player: Player | null = null;
   protected patrolDirection: number = 1;
   protected patrolTimer: number = 0;
@@ -46,12 +46,12 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   update(time: number, delta: number): void {
-    if (this.state === 'dead') return;
+    if (this.aiState === 'dead') return;
 
     if (this.hurtTimer > 0) {
       this.hurtTimer -= delta;
       if (this.hurtTimer <= 0) {
-        this.state = 'patrol';
+      this.aiState = 'patrol';
         this.setTint(0xffffff);
       }
       return;
@@ -81,10 +81,10 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
     const dist = Math.abs(distX);
 
     if (dist < this.detectionRange) {
-      this.state = 'chase';
+      this.aiState = 'chase';
       this.chase(distX, dist, time);
     } else {
-      this.state = 'patrol';
+      this.aiState = 'patrol';
       this.patrol(delta);
     }
   }
@@ -115,12 +115,12 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
   protected tryAttack(time: number): void {
     if (time - this.lastAttackTime < this.attackCooldown) return;
     this.lastAttackTime = time;
-    this.state = 'attack';
+    this.aiState = 'attack';
     // Default melee attack - handled by collision in GameScene
   }
 
   takeDamage(amount: number): boolean {
-    if (this.state === 'dead') return false;
+    if (this.aiState === 'dead') return false;
 
     this.hp -= amount;
     this.hurtTimer = 200;
@@ -139,7 +139,7 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   protected die(): void {
-    this.state = 'dead';
+    this.aiState = 'dead';
     this.body.setVelocity(0, 0);
     this.body.setAllowGravity(false);
 
