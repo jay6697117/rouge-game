@@ -54,6 +54,7 @@ export class GameScene extends Phaser.Scene {
   private currentChapter: number = 1;
   private chunks: ChunkData[] = [];
   private bossDefeated: boolean = false;
+  private bossMusicPlaying: boolean = false;
   private isPaused: boolean = false;
   private blessingUI: Phaser.GameObjects.Container | null = null;
 
@@ -81,6 +82,7 @@ export class GameScene extends Phaser.Scene {
   init(data: { chapter?: number }): void {
     this.currentChapter = data.chapter || 1;
     this.bossDefeated = false;
+    this.bossMusicPlaying = false;
     this.isPaused = false;
     this.currentBoss = null;
     this.vines = [];
@@ -864,8 +866,9 @@ export class GameScene extends Phaser.Scene {
       this.bossHpText!.setText('MAMMOTH');
       this.bossHpText!.setVisible(true);
 
-      // Start boss music if not already
-      if (!this.bossDefeated) {
+      // Start boss music if not already playing
+      if (!this.bossDefeated && !this.bossMusicPlaying) {
+        this.bossMusicPlaying = true;
         this.soundManager.startBossMusic();
       }
     } else {
